@@ -5,6 +5,7 @@ import { TextInput } from 'react-native-gesture-handler'
 import * as Animatable from 'react-native-animatable';
 import { CUISINE_FILTERS, DIET_FILTERS, DISH_FILTERS } from '../Data';
 import ListOfResiepies from './components.js/listOfResiepies';
+import Floatingbtn from './components.js/floatingbtn';
 
 
 const Search = () => {
@@ -87,14 +88,8 @@ const Search = () => {
             </View>
             {
                 searchword != '' &&
-                <TouchableOpacity
-                    onPress={() => {
-                        fetchdata()
-                    }
-
-                    } style={styles.searchBtn}>
-                    <Text style={{ fontSize: 20, fontWeight: '600', color: 'white' }}>Search</Text>
-                </TouchableOpacity>
+     
+                <Floatingbtn onPress={()=>fetchdata()} lebel={"Search"} />
             }
 
             {
@@ -107,11 +102,6 @@ const Search = () => {
                     }}>Please Search</Text>
                 </View>
 
-            }
-
-            {
-                Array.isArray(respie) && respie.length == 0 &&
-                <Text>No Data Found..</Text>
             }
 
             {
@@ -136,9 +126,7 @@ const Search = () => {
 
             {
                 Array.isArray(respie) && respie.length != 0 &&
-                <TouchableOpacity onPress={() => setmodal(true)} style={styles.flottingbtn}>
-                    <Text style={{ fontSize: 27, fontWeight: '600', color: 'white' }}>Filter</Text>
-                </TouchableOpacity>
+                <Floatingbtn onPress={()=>setmodal(true)} lebel={"Filter"}/>
             }
 
             <Modal
@@ -279,21 +267,7 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         backgroundColor: '#05B681'
     },
-    flottingbtn: {
-        backgroundColor: '#05B681',
-        height: 50,
-        width: '30%',
-        borderRadius: 25,
-        position: 'absolute',
-        bottom: 30,
-        right: 20,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    floatingIcon: {
-        height: '50%',
-        width: '50%',
-    },
+   
     
     modalContainer: {
         flex: 1,

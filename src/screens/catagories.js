@@ -2,6 +2,7 @@ import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet, ActivityIndi
 import React, { useEffect, useState } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import * as Animatable from 'react-native-animatable'
+import ListOfResiepies from './components.js/listOfResiepies'
 
 const Catagories = () => {
     const route = useRoute()
@@ -56,12 +57,7 @@ const Catagories = () => {
                     return (
                         <Animatable.View animation={'slideInUp'} style={{flex:1}}>
 
-                            <TouchableOpacity
-                                onPress={() => navigation.navigate('Detail', item)}
-                                style={styles.searchedItems}>
-                                <Image source={{ uri: item.image }} style={styles.itempic} />
-                                <Text style={{ fontSize: 16, width: '70%', marginStart: 10, alignSelf: 'center' }}>{item.title}</Text>
-                            </TouchableOpacity>
+                            <ListOfResiepies items={item}/>
                         </Animatable.View>
 
                     )

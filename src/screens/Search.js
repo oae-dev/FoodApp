@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native'
 import { TextInput } from 'react-native-gesture-handler'
 import * as Animatable from 'react-native-animatable';
 import { CUISINE_FILTERS, DIET_FILTERS, DISH_FILTERS } from '../Data';
+import ListOfResiepies from './components.js/listOfResiepies';
 
 
 const Search = () => {
@@ -124,12 +125,7 @@ const Search = () => {
                             data={respie}
                             renderItem={({ item }) => {
                                 return (
-                                    <TouchableOpacity
-                                        onPress={() => navigation.navigate('Detail', item)}
-                                        style={styles.searchedItems}>
-                                        <Image source={{ uri: item.image }} style={styles.itempic} />
-                                        <Text style={{ fontSize: 16, width: '70%', marginStart: 10, alignSelf: 'center' }}>{item.title}</Text>
-                                    </TouchableOpacity>
+                                    <ListOfResiepies items={item}/>
                                 )
                             }} />
                     </View>
@@ -298,20 +294,7 @@ const styles = StyleSheet.create({
         height: '50%',
         width: '50%',
     },
-    searchedItems: {
-        height: 101,
-        width: '95%',
-        flexDirection: 'row',
-        margin: 5,
-        borderWidth: 2,
-        borderRadius: 4,
-        borderColor: '#969696'
-    },
-    itempic: {
-        height: 100,
-        width: 100,
-        borderRadius: 10
-    },
+    
     modalContainer: {
         flex: 1,
         justifyContent: 'flex-end'

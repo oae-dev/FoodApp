@@ -6,6 +6,7 @@ import * as Animatable from 'react-native-animatable';
 import { CUISINE_FILTERS, DIET_FILTERS, DISH_FILTERS } from '../Data';
 import ListOfResiepies from './components.js/listOfResiepies';
 import Floatingbtn from './components.js/floatingbtn';
+import GoBack from './components.js/GoBack';
 
 
 const Search = () => {
@@ -51,19 +52,7 @@ const Search = () => {
 
     return (
         <View style={{ flex: 1 }}>
-            <View style={{ flexDirection: 'row', borderBottomEndRadius: 15, borderBottomStartRadius: 15, height: '7%' }}>
-
-
-                <TouchableOpacity
-                    onPress={() => navigation.goBack()}
-                    style={styles.back}>
-                    <Image source={require('../../assets/back.png')} style={{ height: '50%', width: '50%' }} />
-                </TouchableOpacity>
-
-                <Text style={styles.title}>
-                    Search
-                </Text>
-            </View>
+            <GoBack title={"Search"} />
 
             <View style={styles.search} activeOpacity={0.7}>
                 <Image source={require('../../assets/seachLogo.png')} style={styles.searchLogo} />
@@ -88,7 +77,6 @@ const Search = () => {
             </View>
             {
                 searchword != '' &&
-     
                 <Floatingbtn onPress={()=>fetchdata()} lebel={"Search"} />
             }
 
@@ -122,13 +110,15 @@ const Search = () => {
 
             }
 
-
-
             {
                 Array.isArray(respie) && respie.length != 0 &&
                 <Floatingbtn onPress={()=>setmodal(true)} lebel={"Filter"}/>
             }
 
+                <Floatingbtn 
+                onPress={()=> navigation.navigate('Favorite')}
+                lebel={'fav'}
+            />
             <Modal
                 visible={showmodal}
                 transparent>
@@ -214,28 +204,14 @@ const Search = () => {
                     </View>
                 </View>
             </Modal>
+            
+            
 
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    back: {
-        height: 40,
-        width: 40,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginHorizontal: 25,
-        marginVertical: 15,
-        backgroundColor: 'white',
-        borderRadius: 20
-    },
-    title: {
-        fontSize: 19,
-        alignSelf: 'center',
-        fontWeight: '600',
-        marginTop: 3
-    },
     search: {
         height: 50,
         width: '90%',

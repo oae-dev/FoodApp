@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import * as Animatable from 'react-native-animatable'
 import ListOfResiepies from './components.js/listOfResiepies'
+import GoBack from './components.js/GoBack'
 
 const Catagories = () => {
     const route = useRoute()
@@ -34,17 +35,7 @@ const Catagories = () => {
     }
     return (
         <View style={{flex:1}}>
-
-            <View style={{flexDirection:'row',borderBottomEndRadius:15,borderBottomStartRadius:15,height:'7%'}}>
-                <TouchableOpacity
-                onPress={() => navigation.goBack()}
-                style={styles.back}>
-                <Image source={require('../../assets/back.png')} style={{ height: '50%', width: '50%' }} />
-            </TouchableOpacity>
-            <Text style={styles.title}>
-                {title}
-            </Text>
-            </View>
+            <GoBack title={title}/>
             {
                 loader ? 
                 <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
@@ -72,21 +63,8 @@ const Catagories = () => {
 }
 
 const styles = StyleSheet.create({
-    back: {
-        height: 40,
-        width: 40,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginHorizontal: 25,
-        marginVertical: 15,
-        backgroundColor: 'white',
-        borderRadius: 20
-    },
-    title:{
-    fontSize:19,
-    alignSelf:'center',
-    fontWeight:'600'
-    },
+    
+    
     searchedItems: {
         height: 101,
         width: '95%',

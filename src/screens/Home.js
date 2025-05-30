@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { MEAL_FILTERS } from '../Data'
 import { useNavigation } from '@react-navigation/native'
 import * as Animatable from 'react-native-animatable'
+import Floatingbtn from './components.js/floatingbtn'
 
 const Home = () => {
 const [respie,setrespie] = useState([])
@@ -86,6 +87,10 @@ fetch('https://api.spoonacular.com/recipes/complexSearch?diet=low-carb&query=foo
             
         )}/>
       </View>
+      <Floatingbtn
+                      onPress={() => navigation.navigate('Favorite')}
+                      lebel={'fav'}
+                  />
     </View>
   )
 }

@@ -7,6 +7,7 @@ import Search from './Search'
 import Details from './Details'
 import Splash from './Splash'
 import Catagories from './catagories'
+import Favorites from './Favorites'
 
 const Stack = createStackNavigator()
 
@@ -19,7 +20,7 @@ const Naigator = () => {
             <Stack.Screen name='Search' component={Search}/>
             <Stack.Screen name='Detail' component={Details}/>
             <Stack.Screen name='Catagories' component={Catagories}/>
-
+            <Stack.Screen name='Favorite' component={Favorites}/>
         </Stack.Navigator>
     </NavigationContainer>
   )

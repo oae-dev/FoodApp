@@ -77,7 +77,7 @@ const Search = () => {
             </View>
             {
                 searchword != '' &&
-                <Floatingbtn onPress={()=>fetchdata()} lebel={"Search"} />
+                <Floatingbtn onPress={() => fetchdata()} lebel={"Search"} />
             }
 
             {
@@ -103,7 +103,7 @@ const Search = () => {
                             data={respie}
                             renderItem={({ item }) => {
                                 return (
-                                    <ListOfResiepies items={item}/>
+                                    <ListOfResiepies items={item} />
                                 )
                             }} />
                     </View>
@@ -112,13 +112,9 @@ const Search = () => {
 
             {
                 Array.isArray(respie) && respie.length != 0 &&
-                <Floatingbtn onPress={()=>setmodal(true)} lebel={"Filter"}/>
+                <Floatingbtn onPress={() => setmodal(true)} lebel={"Filter"} />
             }
 
-                <Floatingbtn 
-                onPress={()=> navigation.navigate('Favorite')}
-                lebel={'fav'}
-            />
             <Modal
                 visible={showmodal}
                 transparent>
@@ -204,8 +200,6 @@ const Search = () => {
                     </View>
                 </View>
             </Modal>
-            
-            
 
         </View>
     )
@@ -243,8 +237,8 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         backgroundColor: '#05B681'
     },
-   
-    
+
+
     modalContainer: {
         flex: 1,
         justifyContent: 'flex-end'

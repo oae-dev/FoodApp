@@ -16,7 +16,7 @@ const ListOfResiepies = (props) => {
                 <Text style={{ fontSize: 16, width: '70%', marginStart: 10, alignSelf: 'center' }}>{item.title}</Text>
             </TouchableOpacity>
 
-            <Favicon />
+            <Favicon items ={item}/>
 
         </View>
     )

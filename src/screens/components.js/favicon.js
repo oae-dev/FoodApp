@@ -1,38 +1,45 @@
-import { View, Text,TouchableOpacity, Image, StyleSheet } from 'react-native'
-import React, { useState } from 'react'
+import { View, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToFav, removeFromFav } from '../../Redux/Action';
 
-const Favicon = () => {
+const Favicon = (props) => {
+  const data = props.items;
+  const favData = useSelector((state) => state.FavorateReducer);
+  const dispatch = useDispatch();
 
-    const [isFavorite,setFavorite] = useState(false)
+  const isFavorite = favData.some((favItem) => favItem.id === data.id);
+
+  const toggleFavorite = () => {
+    if (isFavorite) {
+      dispatch(removeFromFav(data));
+    } else {
+      dispatch(addToFav(data));
+    }
+  };
 
   return (
     <View>
-      {
-                      isFavorite ?
-                          <TouchableOpacity
-                          onPress={()=>setFavorite(!isFavorite)}>
-                              <Image source={require('../../../assets/fav.png')}
-                                  style={styles.fav}
-                              />
-                          </TouchableOpacity>
-                          :
-                          <TouchableOpacity
-                          onPress={()=>setFavorite(!isFavorite)}>
-                              <Image source={require('../../../assets/notFav.png')}
-                                  style={styles.fav}
-                              />
-                          </TouchableOpacity>
-                  }
+      <TouchableOpacity onPress={toggleFavorite}>
+        <Image
+          source={
+            isFavorite
+              ? require('../../../assets/fav.png')
+              : require('../../../assets/notFav.png')
+          }
+          style={styles.fav}
+        />
+      </TouchableOpacity>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
-   fav:{
-        height:40,
-        width:40,
-        marginTop:'50%'
-    }
-})
+  fav: {
+    height: 40,
+    width: 40,
+    marginTop: '50%',
+  },
+});
 
-export default Favicon
+export default Favicon;

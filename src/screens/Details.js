@@ -18,7 +18,7 @@ const Details = () => {
           <Image source={require('../../assets/back.png')} style={{ height: '50%', width: '50%' }} />
         </TouchableOpacity>
         <View style={styles.fav}>
-          <Favicon />
+          <Favicon items={data}/>
         </View>
       </View>
 
